@@ -1,0 +1,177 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Question 💗</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- SCREEN 1: The Question -->
+    <main id="question-screen" class="screen">
+
+        <div class="container">
+
+            <img
+                src="assets/cat.png"
+                alt="Cute cat"
+                class="cat"
+            >
+
+            <h1>Will you go out with me? 💗</h1>
+
+            <p id="dialogue">
+                Please say yes 🥺👉👈
+            </p>
+
+            <div class="buttons">
+                <button id="yes-button">YES 💗</button>
+                <button id="no-button">NO 😭</button>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- SCREEN 2: She Said Yes -->
+    <main id="yes-screen" class="screen hidden">
+
+        <div class="container">
+
+            <h1>YAY!!! 🎉💗</h1>
+
+            <p>I'm so glad you said yes! 🥹</p>
+
+            <p>
+                You just made me really happy hehe.
+            </p>
+
+            <button id="continue-button">
+                Press to continue →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- SCREEN 3: Pick a Date -->
+    <main id="date-screen" class="screen hidden">
+
+        <div class="container">
+
+            <h1>Pick a date 📅💗</h1>
+
+            <p>
+                When should we go on our first date? 👀
+            </p>
+
+            <input
+                type="date"
+                id="date-input"
+            >
+
+            <button id="date-continue-button">
+                Continue →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- SCREEN 4: Choose an Activity -->
+    <main id="activity-screen" class="screen hidden">
+
+        <div class="container">
+
+            <h1>What would you like to do? 💕</h1>
+
+            <p>
+                Pick something for our first date!
+            </p>
+
+            <div class="activities">
+
+                <button class="activity">
+                    🍿 Watch a movie
+                </button>
+
+                <button class="activity">
+                    ☕ Go to a café
+                </button>
+
+                <button class="activity">
+                    🍜 Grab some food
+                </button>
+
+                <button class="activity">
+                    🎮 Play games
+                </button>
+
+                <button class="activity">
+                    🛍️ Go shopping
+                </button>
+
+                <button class="activity">
+                    🌳 Go for a walk
+                </button>
+
+                <button class="activity">
+                    🎨 Do something creative
+                </button>
+
+                <button class="activity">
+                    💬 Just hang out & talk
+                </button>
+
+            </div>
+
+            <button id="activity-continue-button">
+                Continue →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- SCREEN 5: Final Confirmation -->
+    <main id="final-screen" class="screen hidden">
+
+        <div class="container">
+
+            <h1>It's a date! 🥰💗</h1>
+
+            <p id="final-date">
+                Date: TBD
+            </p>
+
+            <p id="final-activity">
+                Activity: TBD
+            </p>
+
+            <p>
+                I can't wait to spend time with you. 💕
+            </p>
+
+            <p>
+                See you soon! 🐱💗
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
