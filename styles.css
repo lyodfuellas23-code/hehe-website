@@ -1,0 +1,215 @@
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background: #ffeef5;
+    color: #4a3040;
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 500px;
+
+    text-align: center;
+
+    background: white;
+
+    padding: 40px 30px;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   CAT
+========================= */
+
+.cat {
+    width: 180px;
+    max-width: 80%;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#dialogue {
+    min-height: 30px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+
+    padding: 14px 25px;
+
+    border-radius: 12px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#yes-button {
+    background: #ff7eaa;
+    color: white;
+
+    font-weight: bold;
+
+    transition: transform 0.3s ease;
+}
+
+#no-button {
+    background: #eeeeee;
+    color: #555;
+
+    margin-left: 10px;
+}
+
+.buttons {
+    margin-top: 25px;
+}
+
+
+/* =========================
+   CONTINUE BUTTONS
+========================= */
+
+#continue-button,
+#date-continue-button,
+#activity-continue-button {
+    margin-top: 25px;
+
+    background: #ff7eaa;
+    color: white;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   DATE INPUT
+========================= */
+
+#date-input {
+    display: block;
+
+    margin: 25px auto 0;
+
+    padding: 12px;
+
+    font-size: 17px;
+
+    border: 2px solid #ffc1d5;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   ACTIVITIES
+========================= */
+
+.activities {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.activity {
+    background: #fff0f5;
+
+    border: 2px solid #ffd2df;
+
+    font-size: 15px;
+}
+
+.activity.selected {
+    background: #ff7eaa;
+    color: white;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    .activities {
+        grid-template-columns: 1fr;
+    }
+}
+
