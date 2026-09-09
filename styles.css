@@ -22,14 +22,74 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(
-        to bottom,
-        #f58fc0,
-        #f7a4ca,
-        #f29bc5
-    );
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #e97bb2 0%,
+            #f29ac7 28%,
+            #f6b3d4 48%,
+            #cfa7d8 72%,
+            #8f82bc 100%
+        );
 
     color: white;
+}
+
+
+/* ========================================
+   Soft sunset glow
+======================================== */
+
+.question-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ffd7e8;
+
+    opacity: 0.35;
+
+    filter: blur(35px);
+
+    z-index: 1;
+}
+
+
+/* ========================================
+   Subtle retro screen texture
+======================================== */
+
+.question-screen::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.035) 0px,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    pointer-events: none;
+
+    z-index: 50;
 }
 
 
@@ -39,6 +99,7 @@ body {
 
 .content {
     position: relative;
+
     z-index: 10;
 
     display: flex;
@@ -60,16 +121,19 @@ body {
     height: 170px;
 
     padding: 7px;
+
     margin-bottom: 35px;
 
     background: #ffb5d6;
 
     border: 4px solid white;
+
     border-radius: 14px;
 
     box-shadow:
         0 0 0 4px #c92c72,
-        0 7px 0 #9c1f58;
+        0 7px 0 #9c1f58,
+        0 12px 25px rgba(104, 24, 77, 0.25);
 }
 
 
@@ -85,9 +149,16 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: #17151b;
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #39313f,
+            #17151b 70%
+        );
 
     border-radius: 7px;
+
+    overflow: hidden;
 }
 
 
@@ -99,6 +170,9 @@ body {
     font-size: 75px;
 
     animation: plead 1.2s infinite ease-in-out;
+
+    filter:
+        drop-shadow(0 5px 0 rgba(255, 105, 170, 0.35));
 }
 
 
@@ -147,7 +221,8 @@ h1 {
     color: white;
 
     text-shadow:
-        3px 3px 0 #b51d59;
+        3px 3px 0 #a52261,
+        6px 6px 0 rgba(105, 25, 72, 0.18);
 }
 
 
@@ -157,15 +232,12 @@ h1 {
 
 .buttons {
     display: flex;
+
     justify-content: center;
     align-items: flex-start;
 
     gap: 90px;
 
-    /*
-        More space between the question
-        and the buttons.
-    */
     margin-top: 38px;
 }
 
@@ -176,7 +248,9 @@ h1 {
 
 .no-container {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     position: relative;
@@ -209,7 +283,7 @@ h1 {
     text-align: center;
 
     text-shadow:
-        2px 2px 0 #b51d59;
+        2px 2px 0 #a52261;
 
     transition:
         left 2s ease-in-out,
@@ -261,13 +335,19 @@ button {
 
     color: white;
 
-    background: #e83d82;
+    background:
+        linear-gradient(
+            to bottom,
+            #f05296,
+            #dc2f76
+        );
 
     border: 3px solid white;
 
     box-shadow:
         0 0 0 3px #9d2058,
-        0 5px 0 #8c194f;
+        0 5px 0 #8c194f,
+        0 8px 14px rgba(116, 20, 70, 0.2);
 
     transform-origin: center center;
 
@@ -275,10 +355,6 @@ button {
 
     z-index: 5;
 
-    /*
-        Allows the final movement to the
-        center to animate smoothly.
-    */
     transition:
         transform 1.2s ease-in-out,
         left 1.2s ease-in-out,
@@ -295,10 +371,6 @@ button {
 
     z-index: 100;
 
-    /*
-        Remove the normal flex positioning
-        so JavaScript can animate it freely.
-    */
     margin: 0;
 }
 
@@ -314,16 +386,35 @@ button {
 
     color: #a82a5b;
 
-    background: #ffd8e8;
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe7f1,
+            #ffd1e3
+        );
 
     border: 2px solid #c72d6d;
 
     box-shadow:
-        0 3px 0 #a82259;
+        0 3px 0 #a82259,
+        0 6px 10px rgba(116, 20, 70, 0.16);
 
     position: relative;
 
     z-index: 20;
+}
+
+
+/* ========================================
+   Button hover
+======================================== */
+
+#yes-button:hover {
+    filter: brightness(1.08);
+}
+
+#no-button:hover {
+    filter: brightness(1.05);
 }
 
 
@@ -338,8 +429,13 @@ button {
 
     color: white;
 
+    text-shadow:
+        2px 2px 0 rgba(184, 45, 111, 0.45);
+
     animation:
         sparkle 2s infinite ease-in-out;
+
+    z-index: 4;
 }
 
 
@@ -352,32 +448,77 @@ button {
 .sparkle-2 {
     top: 25%;
     right: 13%;
+
+    animation-delay: 0.7s;
 }
 
 
 .sparkle-3 {
     bottom: 35%;
     left: 15%;
+
+    animation-delay: 1.2s;
 }
 
 
 @keyframes sparkle {
 
     0% {
-        opacity: 0.3;
-        transform: scale(0.8);
+        opacity: 0.25;
+
+        transform:
+            scale(0.8)
+            rotate(0deg);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.2);
+
+        transform:
+            scale(1.2)
+            rotate(15deg);
     }
 
     100% {
-        opacity: 0.3;
-        transform: scale(0.8);
+        opacity: 0.25;
+
+        transform:
+            scale(0.8)
+            rotate(0deg);
     }
 
+}
+
+
+/* ========================================
+   Extra decorative stars
+======================================== */
+
+.sparkle-1::after {
+    content: "·";
+
+    position: absolute;
+
+    top: 35px;
+    left: 28px;
+
+    font-size: 18px;
+
+    opacity: 0.7;
+}
+
+
+.sparkle-2::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: -25px;
+    left: 35px;
+
+    font-size: 12px;
+
+    opacity: 0.6;
 }
 
 
@@ -396,7 +537,30 @@ button {
     color: white;
 
     text-shadow:
-        3px 3px 0 #d52b70;
+        3px 3px 0 #d52b70,
+        6px 6px 0 rgba(125, 31, 80, 0.15);
+
+    animation:
+        heartFloat 3s infinite ease-in-out;
+
+    z-index: 4;
+}
+
+
+@keyframes heartFloat {
+
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
 }
 
 
@@ -407,28 +571,97 @@ button {
 .cloud {
     position: absolute;
 
-    width: 180px;
-    height: 60px;
+    width: 190px;
+    height: 58px;
 
     background: #fff4fa;
 
     border-radius: 50%;
 
-    opacity: 0.9;
+    opacity: 0.82;
+
+    filter:
+        drop-shadow(
+            0 5px 0 rgba(180, 104, 164, 0.12)
+        );
+
+    z-index: 3;
+}
+
+
+/* Cloud bubbles */
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    background: #fff4fa;
+
+    border-radius: 50%;
+}
+
+
+.cloud::before {
+    width: 85px;
+    height: 85px;
+
+    left: 25px;
+    bottom: 5px;
+}
+
+
+.cloud::after {
+    width: 65px;
+    height: 65px;
+
+    right: 25px;
+    bottom: 0;
 }
 
 
 .cloud-1 {
     top: 8%;
-    right: -30px;
+    right: -35px;
+
+    transform: scale(1.05);
 }
 
 
 .cloud-2 {
     bottom: 25%;
-    left: -50px;
+    left: -60px;
 
-    transform: scale(1.3);
+    transform: scale(1.25);
+}
+
+
+/* ========================================
+   Sunset horizon
+======================================== */
+
+.question-screen .mountains::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: #ffc1dd;
+
+    left: 50%;
+    top: -85px;
+
+    transform: translateX(-50%);
+
+    opacity: 0.9;
+
+    box-shadow:
+        0 0 35px rgba(255, 193, 221, 0.5);
 }
 
 
@@ -443,22 +676,64 @@ button {
     left: 0;
 
     width: 100%;
-    height: 180px;
+    height: 210px;
 
-    background: #e66ca6;
+    background:
+        linear-gradient(
+            to bottom,
+            #d766a2,
+            #b94f88
+        );
 
     clip-path: polygon(
-        0 70%,
-        15% 40%,
-        30% 65%,
-        45% 30%,
-        60% 65%,
-        75% 35%,
-        90% 65%,
-        100% 45%,
+        0 72%,
+        8% 55%,
+        15% 38%,
+        23% 61%,
+        32% 47%,
+        42% 68%,
+        52% 40%,
+        62% 63%,
+        72% 43%,
+        82% 64%,
+        91% 48%,
+        100% 60%,
         100% 100%,
         0 100%
     );
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   Second mountain layer
+======================================== */
+
+.mountains::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #914273;
+
+    clip-path: polygon(
+        0 82%,
+        12% 66%,
+        25% 75%,
+        37% 57%,
+        50% 77%,
+        63% 60%,
+        76% 78%,
+        88% 63%,
+        100% 73%,
+        100% 100%,
+        0 100%
+    );
+
+    opacity: 0.65;
 }
 
 
@@ -469,7 +744,7 @@ button {
 .city {
     position: absolute;
 
-    bottom: 75px;
+    bottom: 72px;
 
     width: 100%;
 
@@ -481,18 +756,23 @@ button {
 
     letter-spacing: 5px;
 
-    color: #d24b8c;
+    color: #8b3b70;
+
+    text-shadow:
+        2px 2px 0 rgba(255, 175, 213, 0.18);
+
+    z-index: 4;
 }
 
 
 /* ========================================
-   Flowers
+   Flowers / foreground
 ======================================== */
 
 .grass {
     position: absolute;
 
-    bottom: 12px;
+    bottom: 8px;
 
     width: 100%;
 
@@ -500,9 +780,37 @@ button {
 
     font-size: 24px;
 
-    color: #c72d70;
+    color: #8f3c70;
 
     letter-spacing: 8px;
+
+    text-shadow:
+        2px 2px 0 rgba(255, 184, 218, 0.2);
+
+    z-index: 5;
+}
+
+
+/* ========================================
+   Extra pixel ground
+======================================== */
+
+.question-screen .grass::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 100%;
+    height: 28px;
+
+    background: #70345e;
+
+    opacity: 0.75;
+
+    z-index: -1;
 }
 
 
@@ -537,12 +845,42 @@ button {
 
     #dialogue {
         width: 180px;
+
         font-size: 8px;
     }
 
 
     .heart {
         font-size: 40px;
+    }
+
+
+    .cloud {
+        transform: scale(0.75);
+    }
+
+
+    .cloud-1 {
+        right: -75px;
+    }
+
+
+    .cloud-2 {
+        left: -95px;
+    }
+
+
+    .city {
+        font-size: 30px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .grass {
+        font-size: 18px;
+
+        letter-spacing: 4px;
     }
 
 }
