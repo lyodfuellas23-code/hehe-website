@@ -2,251 +2,198 @@
     box-sizing: border-box;
 }
 
+
+html,
 body {
+
     margin: 0;
-    min-height: 100vh;
+
+    width: 100%;
+
+    min-height: 100%;
+
+}
+
+
+body {
+
     overflow: hidden;
+
     font-family: Arial, sans-serif;
+
 }
 
 
 /* ========================================
-   Main page
+   MAIN PAGE
 ======================================== */
 
 .question-screen {
+
     position: relative;
+
+    width: 100%;
+
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     overflow: hidden;
 
-    background:
-        linear-gradient(
-            to bottom,
-            #e97bb2 0%,
-            #f29ac7 28%,
-            #f6b3d4 48%,
-            #cfa7d8 72%,
-            #8f82bc 100%
-        );
+    background-image:
+        url("assets/background.png");
 
-    color: white;
+    background-size: 100% 100%;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
 }
 
 
 /* ========================================
-   Soft sunset glow
-======================================== */
-
-.question-screen::before {
-    content: "";
-
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    left: 50%;
-    top: 48%;
-
-    transform: translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background: #ffd7e8;
-
-    opacity: 0.35;
-
-    filter: blur(35px);
-
-    z-index: 1;
-}
-
-
-/* ========================================
-   Subtle retro screen texture
-======================================== */
-
-.question-screen::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.035) 0px,
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px,
-            transparent 4px
-        );
-
-    pointer-events: none;
-
-    z-index: 50;
-}
-
-
-/* ========================================
-   Main content
+   MAIN CONTENT
 ======================================== */
 
 .content {
+
     position: relative;
 
     z-index: 10;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     text-align: center;
 
     margin-bottom: 80px;
+
 }
 
 
 /* ========================================
-   Cat frame
+   CAT FRAME
 ======================================== */
 
 .cat-frame {
+
     width: 170px;
+
     height: 170px;
 
     padding: 7px;
 
     margin-bottom: 35px;
 
-    background: #ffb5d6;
+    background: #ffb9d8;
 
     border: 4px solid white;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
     box-shadow:
-        0 0 0 4px #c92c72,
-        0 7px 0 #9c1f58,
-        0 12px 25px rgba(104, 24, 77, 0.25);
+        0 0 0 4px #c72c70,
+        0 7px 0 #941c55,
+        0 12px 20px rgba(111, 28, 75, 0.25);
+
 }
 
 
 /* ========================================
-   Inside of cat frame
+   CAT SCREEN
 ======================================== */
 
 .cat-screen {
+
     width: 100%;
+
     height: 100%;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
-    background:
-        radial-gradient(
-            circle at 50% 40%,
-            #39313f,
-            #17151b 70%
-        );
+    background: #18161c;
 
-    border-radius: 7px;
+    border-radius: 6px;
 
     overflow: hidden;
+
 }
 
 
 /* ========================================
-   Temporary cat
+   TEMPORARY CAT
 ======================================== */
 
 .cat {
+
     font-size: 75px;
 
-    animation: plead 1.2s infinite ease-in-out;
-
-    filter:
-        drop-shadow(0 5px 0 rgba(255, 105, 170, 0.35));
 }
 
 
 /* ========================================
-   Cat pleading animation
-======================================== */
-
-@keyframes plead {
-
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    25% {
-        transform: translateY(-6px) rotate(-3deg);
-    }
-
-    50% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    75% {
-        transform: translateY(-6px) rotate(3deg);
-    }
-
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-}
-
-
-/* ========================================
-   Question
+   QUESTION
 ======================================== */
 
 h1 {
+
     margin: 0;
 
-    font-family: "Press Start 2P", monospace;
+    font-family:
+        "Press Start 2P",
+        monospace;
 
-    font-size: clamp(20px, 4vw, 34px);
+    font-size:
+        clamp(20px, 4vw, 34px);
 
     line-height: 1.7;
 
     color: white;
 
     text-shadow:
-        3px 3px 0 #a52261,
-        6px 6px 0 rgba(105, 25, 72, 0.18);
+        3px 3px 0 #c12668,
+        6px 6px 0 rgba(125, 31, 80, 0.25);
+
 }
 
 
 /* ========================================
-   Buttons area
+   BUTTON AREA
 ======================================== */
 
 .buttons {
+
     display: flex;
 
     justify-content: center;
+
     align-items: flex-start;
 
     gap: 90px;
 
     margin-top: 38px;
+
 }
 
 
 /* ========================================
-   NO button + dialogue
+   NO CONTAINER
 ======================================== */
 
 .no-container {
+
     display: flex;
 
     flex-direction: column;
@@ -255,24 +202,24 @@ h1 {
 
     position: relative;
 
-    transition:
-        left 2.5s ease-in-out,
-        top 2.5s ease-in-out;
 }
 
 
 /* ========================================
-   Dialogue
+   DIALOGUE
 ======================================== */
 
 #dialogue {
+
     width: 230px;
 
     min-height: 25px;
 
     margin: 15px 0 0;
 
-    font-family: "Press Start 2P", monospace;
+    font-family:
+        "Press Start 2P",
+        monospace;
 
     font-size: 10px;
 
@@ -283,19 +230,17 @@ h1 {
     text-align: center;
 
     text-shadow:
-        2px 2px 0 #a52261;
+        2px 2px 0 #b51d59;
 
-    transition:
-        left 2s ease-in-out,
-        top 2s ease-in-out;
 }
 
 
 /* ========================================
-   Final dialogue animation
+   FINAL DIALOGUE
 ======================================== */
 
 #dialogue.final-dialogue {
+
     position: fixed;
 
     z-index: 100;
@@ -303,32 +248,33 @@ h1 {
     margin: 0;
 
     pointer-events: none;
+
 }
 
 
 /* ========================================
-   General buttons
+   GENERAL BUTTONS
 ======================================== */
 
 button {
-    font-family: "Press Start 2P", monospace;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
 
     cursor: pointer;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    transition:
-        transform 0.25s ease,
-        left 0.25s ease,
-        top 0.25s ease;
 }
 
 
 /* ========================================
-   YES button
+   YES BUTTON
 ======================================== */
 
 #yes-button {
+
     padding: 10px 15px;
 
     font-size: 12px;
@@ -338,16 +284,16 @@ button {
     background:
         linear-gradient(
             to bottom,
-            #f05296,
-            #dc2f76
+            #ed4e91,
+            #d92e73
         );
 
     border: 3px solid white;
 
     box-shadow:
-        0 0 0 3px #9d2058,
-        0 5px 0 #8c194f,
-        0 8px 14px rgba(116, 20, 70, 0.2);
+        0 0 0 3px #a1205b,
+        0 5px 0 #861746,
+        0 7px 0 rgba(106, 26, 68, 0.2);
 
     transform-origin: center center;
 
@@ -355,31 +301,30 @@ button {
 
     z-index: 5;
 
-    transition:
-        transform 1.2s ease-in-out,
-        left 1.2s ease-in-out,
-        top 1.2s ease-in-out;
 }
 
 
 /* ========================================
-   YES final movement
+   YES FINAL MOVEMENT
 ======================================== */
 
 #yes-button.final-yes {
+
     position: fixed;
 
     z-index: 100;
 
     margin: 0;
+
 }
 
 
 /* ========================================
-   NO button
+   NO BUTTON
 ======================================== */
 
 #no-button {
+
     padding: 10px 17px;
 
     font-size: 10px;
@@ -389,498 +334,100 @@ button {
     background:
         linear-gradient(
             to bottom,
-            #ffe7f1,
-            #ffd1e3
+            #fff0f6,
+            #ffd7e7
         );
 
     border: 2px solid #c72d6d;
 
     box-shadow:
-        0 3px 0 #a82259,
-        0 6px 10px rgba(116, 20, 70, 0.16);
+        0 3px 0 #a82259;
 
     position: relative;
 
     z-index: 20;
+
 }
 
 
 /* ========================================
-   Button hover
+   BUTTON HOVER
 ======================================== */
 
 #yes-button:hover {
+
     filter: brightness(1.08);
+
 }
+
 
 #no-button:hover {
+
     filter: brightness(1.05);
-}
-
-
-/* ========================================
-   Sparkles
-======================================== */
-
-.sparkle {
-    position: absolute;
-
-    font-size: 28px;
-
-    color: white;
-
-    text-shadow:
-        2px 2px 0 rgba(184, 45, 111, 0.45);
-
-    animation:
-        sparkle 2s infinite ease-in-out;
-
-    z-index: 4;
-}
-
-
-.sparkle-1 {
-    top: 15%;
-    left: 8%;
-}
-
-
-.sparkle-2 {
-    top: 25%;
-    right: 13%;
-
-    animation-delay: 0.7s;
-}
-
-
-.sparkle-3 {
-    bottom: 35%;
-    left: 15%;
-
-    animation-delay: 1.2s;
-}
-
-
-@keyframes sparkle {
-
-    0% {
-        opacity: 0.25;
-
-        transform:
-            scale(0.8)
-            rotate(0deg);
-    }
-
-    50% {
-        opacity: 1;
-
-        transform:
-            scale(1.2)
-            rotate(15deg);
-    }
-
-    100% {
-        opacity: 0.25;
-
-        transform:
-            scale(0.8)
-            rotate(0deg);
-    }
 
 }
 
 
 /* ========================================
-   Extra decorative stars
-======================================== */
-
-.sparkle-1::after {
-    content: "·";
-
-    position: absolute;
-
-    top: 35px;
-    left: 28px;
-
-    font-size: 18px;
-
-    opacity: 0.7;
-}
-
-
-.sparkle-2::after {
-    content: "✦";
-
-    position: absolute;
-
-    top: -25px;
-    left: 35px;
-
-    font-size: 12px;
-
-    opacity: 0.6;
-}
-
-
-/* ========================================
-   Heart
-======================================== */
-
-.heart {
-    position: absolute;
-
-    top: 25%;
-    left: 5%;
-
-    font-size: 55px;
-
-    color: white;
-
-    text-shadow:
-        3px 3px 0 #d52b70,
-        6px 6px 0 rgba(125, 31, 80, 0.15);
-
-    animation:
-        heartFloat 3s infinite ease-in-out;
-
-    z-index: 4;
-}
-
-
-@keyframes heartFloat {
-
-    0% {
-        transform: translateY(0) rotate(-5deg);
-    }
-
-    50% {
-        transform: translateY(-10px) rotate(5deg);
-    }
-
-    100% {
-        transform: translateY(0) rotate(-5deg);
-    }
-
-}
-
-
-/* ========================================
-   Clouds
-======================================== */
-
-.cloud {
-    position: absolute;
-
-    width: 190px;
-    height: 58px;
-
-    background: #fff4fa;
-
-    border-radius: 50%;
-
-    opacity: 0.82;
-
-    filter:
-        drop-shadow(
-            0 5px 0 rgba(180, 104, 164, 0.12)
-        );
-
-    z-index: 3;
-}
-
-
-/* Cloud bubbles */
-
-.cloud::before,
-.cloud::after {
-    content: "";
-
-    position: absolute;
-
-    background: #fff4fa;
-
-    border-radius: 50%;
-}
-
-
-.cloud::before {
-    width: 85px;
-    height: 85px;
-
-    left: 25px;
-    bottom: 5px;
-}
-
-
-.cloud::after {
-    width: 65px;
-    height: 65px;
-
-    right: 25px;
-    bottom: 0;
-}
-
-
-.cloud-1 {
-    top: 8%;
-    right: -35px;
-
-    transform: scale(1.05);
-}
-
-
-.cloud-2 {
-    bottom: 25%;
-    left: -60px;
-
-    transform: scale(1.25);
-}
-
-
-/* ========================================
-   Sunset horizon
-======================================== */
-
-.question-screen .mountains::before {
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    border-radius: 50%;
-
-    background: #ffc1dd;
-
-    left: 50%;
-    top: -85px;
-
-    transform: translateX(-50%);
-
-    opacity: 0.9;
-
-    box-shadow:
-        0 0 35px rgba(255, 193, 221, 0.5);
-}
-
-
-/* ========================================
-   Mountains
-======================================== */
-
-.mountains {
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 210px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #d766a2,
-            #b94f88
-        );
-
-    clip-path: polygon(
-        0 72%,
-        8% 55%,
-        15% 38%,
-        23% 61%,
-        32% 47%,
-        42% 68%,
-        52% 40%,
-        62% 63%,
-        72% 43%,
-        82% 64%,
-        91% 48%,
-        100% 60%,
-        100% 100%,
-        0 100%
-    );
-
-    z-index: 2;
-}
-
-
-/* ========================================
-   Second mountain layer
-======================================== */
-
-.mountains::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background: #914273;
-
-    clip-path: polygon(
-        0 82%,
-        12% 66%,
-        25% 75%,
-        37% 57%,
-        50% 77%,
-        63% 60%,
-        76% 78%,
-        88% 63%,
-        100% 73%,
-        100% 100%,
-        0 100%
-    );
-
-    opacity: 0.65;
-}
-
-
-/* ========================================
-   City
-======================================== */
-
-.city {
-    position: absolute;
-
-    bottom: 72px;
-
-    width: 100%;
-
-    text-align: center;
-
-    font-family: monospace;
-
-    font-size: 45px;
-
-    letter-spacing: 5px;
-
-    color: #8b3b70;
-
-    text-shadow:
-        2px 2px 0 rgba(255, 175, 213, 0.18);
-
-    z-index: 4;
-}
-
-
-/* ========================================
-   Flowers / foreground
-======================================== */
-
-.grass {
-    position: absolute;
-
-    bottom: 8px;
-
-    width: 100%;
-
-    text-align: center;
-
-    font-size: 24px;
-
-    color: #8f3c70;
-
-    letter-spacing: 8px;
-
-    text-shadow:
-        2px 2px 0 rgba(255, 184, 218, 0.2);
-
-    z-index: 5;
-}
-
-
-/* ========================================
-   Extra pixel ground
-======================================== */
-
-.question-screen .grass::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -8px;
-
-    width: 100%;
-    height: 28px;
-
-    background: #70345e;
-
-    opacity: 0.75;
-
-    z-index: -1;
-}
-
-
-/* ========================================
-   Mobile
+   MOBILE
 ======================================== */
 
 @media (max-width: 600px) {
 
+    .question-screen {
+
+        background-size: 100% 100%;
+
+        background-position: center center;
+
+    }
+
+
+    .content {
+
+        margin-bottom: 50px;
+
+    }
+
+
     .cat-frame {
+
         width: 140px;
+
         height: 140px;
+
     }
 
 
     .cat {
+
         font-size: 60px;
+
     }
 
 
     h1 {
+
         font-size: 18px;
+
     }
 
 
     .buttons {
+
         gap: 45px;
 
         margin-top: 30px;
+
     }
 
 
     #dialogue {
+
         width: 180px;
 
         font-size: 8px;
-    }
 
-
-    .heart {
-        font-size: 40px;
-    }
-
-
-    .cloud {
-        transform: scale(0.75);
-    }
-
-
-    .cloud-1 {
-        right: -75px;
-    }
-
-
-    .cloud-2 {
-        left: -95px;
-    }
-
-
-    .city {
-        font-size: 30px;
-
-        letter-spacing: 2px;
-    }
-
-
-    .grass {
-        font-size: 18px;
-
-        letter-spacing: 4px;
     }
 
 }
