@@ -19,22 +19,173 @@ body {
 
     overflow: hidden;
 
-    font-family: Arial, sans-serif;
+    font-family:
+        Arial,
+        sans-serif;
 
 }
 
 
 /* ========================================
-   MAIN PAGE
+   INTRO SCREEN
+======================================== */
+
+.intro-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8c9df 0%,
+            #e8c9e8 50%,
+            #cbb9df 100%
+        );
+
+    transition:
+        opacity 0.7s ease;
+
+}
+
+
+/* ========================================
+   INTRO CONTENT
+======================================== */
+
+.intro-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    transform:
+        translateY(-20px);
+
+    transition:
+        opacity 0.6s ease;
+
+}
+
+
+/* ========================================
+   INTRO TITLE
+======================================== */
+
+.intro-content h1 {
+
+    margin:
+        0 0 35px;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:
+        clamp(18px, 4vw, 30px);
+
+    line-height:
+        1.8;
+
+    color:
+        white;
+
+    text-shadow:
+        3px 3px 0 #c12668,
+        6px 6px 0 rgba(125, 31, 80, 0.2);
+
+}
+
+
+/* ========================================
+   CONTINUE BUTTON
+======================================== */
+
+#continue-button {
+
+    padding:
+        13px 20px;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:
+        11px;
+
+    color:
+        white;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ed4e91,
+            #d92e73
+        );
+
+    border:
+        3px solid white;
+
+    border-radius:
+        8px;
+
+    box-shadow:
+        0 0 0 3px #a1205b,
+        0 5px 0 #861746;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+
+}
+
+
+#continue-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.08);
+
+}
+
+
+#continue-button:active {
+
+    transform:
+        translateY(2px);
+
+}
+
+
+/* ========================================
+   QUESTION SCREEN
 ======================================== */
 
 .question-screen {
 
-    position: relative;
+    position: fixed;
 
-    width: 100%;
+    inset: 0;
 
-    min-height: 100vh;
+    z-index: 1;
 
     display: flex;
 
@@ -47,11 +198,431 @@ body {
     background-image:
         url("assets/background.png");
 
-    background-size: 100% 100%;
+    background-size:
+        100% 100%;
 
-    background-position: center center;
+    background-position:
+        center center;
 
-    background-repeat: no-repeat;
+    background-repeat:
+        no-repeat;
+
+}
+
+
+/* ========================================
+   CLOUD TRANSITION
+======================================== */
+
+.cloud-transition {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 200;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    visibility: hidden;
+
+}
+
+
+.transition-cloud {
+
+    position: absolute;
+
+    width:
+        320px;
+
+    height:
+        130px;
+
+    background:
+        white;
+
+    border-radius:
+        100px;
+
+    opacity:
+        0;
+
+}
+
+
+.transition-cloud::before,
+.transition-cloud::after {
+
+    content:
+        "";
+
+    position: absolute;
+
+    background:
+        white;
+
+    border-radius:
+        50%;
+
+}
+
+
+.transition-cloud::before {
+
+    width:
+        150px;
+
+    height:
+        150px;
+
+    left:
+        35px;
+
+    bottom:
+        25px;
+
+}
+
+
+.transition-cloud::after {
+
+    width:
+        175px;
+
+    height:
+        175px;
+
+    right:
+        25px;
+
+    bottom:
+        15px;
+
+}
+
+
+/* ========================================
+   CLOUD POSITIONS
+======================================== */
+
+.cloud-1 {
+
+    top:
+        -80px;
+
+    left:
+        -80px;
+
+}
+
+
+.cloud-2 {
+
+    top:
+        -70px;
+
+    left:
+        25%;
+
+    transform:
+        scale(1.2);
+
+}
+
+
+.cloud-3 {
+
+    top:
+        -80px;
+
+    right:
+        -80px;
+
+    transform:
+        scale(0.9);
+
+}
+
+
+.cloud-4 {
+
+    top:
+        20%;
+
+    left:
+        -120px;
+
+    transform:
+        scale(1.3);
+
+}
+
+
+.cloud-5 {
+
+    top:
+        18%;
+
+    left:
+        28%;
+
+    transform:
+        scale(0.9);
+
+}
+
+
+.cloud-6 {
+
+    top:
+        15%;
+
+    right:
+        -100px;
+
+    transform:
+        scale(1.25);
+
+}
+
+
+.cloud-7 {
+
+    top:
+        42%;
+
+    left:
+        -120px;
+
+    transform:
+        scale(0.9);
+
+}
+
+
+.cloud-8 {
+
+    top:
+        40%;
+
+    left:
+        35%;
+
+    transform:
+        scale(1.4);
+
+}
+
+
+.cloud-9 {
+
+    top:
+        43%;
+
+    right:
+        -120px;
+
+    transform:
+        scale(0.85);
+
+}
+
+
+.cloud-10 {
+
+    bottom:
+        -90px;
+
+    left:
+        -100px;
+
+}
+
+
+.cloud-11 {
+
+    bottom:
+        -80px;
+
+    left:
+        35%;
+
+    transform:
+        scale(0.95);
+
+}
+
+
+.cloud-12 {
+
+    bottom:
+        -100px;
+
+    right:
+        -100px;
+
+    transform:
+        scale(1.3);
+
+}
+
+
+/* ========================================
+   CLOUD COVER
+======================================== */
+
+.cloud-transition.active {
+
+    visibility:
+        visible;
+
+}
+
+
+.cloud-transition.active .transition-cloud {
+
+    animation:
+        cloudCover 2s ease-in-out forwards;
+
+}
+
+
+/* ========================================
+   CLOUD DELAYS
+======================================== */
+
+.cloud-1 {
+    animation-delay: 0s !important;
+}
+
+.cloud-2 {
+    animation-delay: 0.04s !important;
+}
+
+.cloud-3 {
+    animation-delay: 0.08s !important;
+}
+
+.cloud-4 {
+    animation-delay: 0.06s !important;
+}
+
+.cloud-5 {
+    animation-delay: 0.12s !important;
+}
+
+.cloud-6 {
+    animation-delay: 0.1s !important;
+}
+
+.cloud-7 {
+    animation-delay: 0.14s !important;
+}
+
+.cloud-8 {
+    animation-delay: 0.18s !important;
+}
+
+.cloud-9 {
+    animation-delay: 0.13s !important;
+}
+
+.cloud-10 {
+    animation-delay: 0.08s !important;
+}
+
+.cloud-11 {
+    animation-delay: 0.16s !important;
+}
+
+.cloud-12 {
+    animation-delay: 0.11s !important;
+}
+
+
+/* ========================================
+   CLOUD COVER ANIMATION
+======================================== */
+
+@keyframes cloudCover {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            scale(0.5);
+
+    }
+
+
+    30% {
+
+        opacity:
+            1;
+
+    }
+
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(4.5);
+
+    }
+
+}
+
+
+/* ========================================
+   CLOUD REVEAL
+======================================== */
+
+.cloud-transition.reveal .transition-cloud {
+
+    animation:
+        cloudReveal 2.2s ease-in-out forwards;
+
+}
+
+
+@keyframes cloudReveal {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(4.5);
+
+    }
+
+
+    25% {
+
+        opacity:
+            1;
+
+    }
+
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            scale(0.15);
+
+    }
 
 }
 
@@ -62,19 +633,26 @@ body {
 
 .content {
 
-    position: relative;
+    position:
+        relative;
 
-    z-index: 10;
+    z-index:
+        10;
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    align-items: center;
+    align-items:
+        center;
 
-    text-align: center;
+    text-align:
+        center;
 
-    margin-bottom: 80px;
+    margin-bottom:
+        80px;
 
 }
 
@@ -85,19 +663,26 @@ body {
 
 .cat-frame {
 
-    width: 170px;
+    width:
+        170px;
 
-    height: 170px;
+    height:
+        170px;
 
-    padding: 7px;
+    padding:
+        7px;
 
-    margin-bottom: 35px;
+    margin-bottom:
+        35px;
 
-    background: #ffb9d8;
+    background:
+        #ffb9d8;
 
-    border: 4px solid white;
+    border:
+        4px solid white;
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
     box-shadow:
         0 0 0 4px #c72c70,
@@ -113,32 +698,41 @@ body {
 
 .cat-screen {
 
-    width: 100%;
+    width:
+        100%;
 
-    height: 100%;
+    height:
+        100%;
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    align-items: center;
+    align-items:
+        center;
 
-    background: #18161c;
+    background:
+        #18161c;
 
-    border-radius: 6px;
+    border-radius:
+        6px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
 }
 
 
-/* ========================================
-   TEMPORARY CAT
-======================================== */
-
 .cat {
 
-    font-size: 75px;
+    font-size:
+        75px;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.2s ease;
 
 }
 
@@ -147,20 +741,23 @@ body {
    QUESTION
 ======================================== */
 
-h1 {
+.question-screen h2 {
 
-    margin: 0;
+    margin:
+        0;
 
     font-family:
         "Press Start 2P",
         monospace;
 
     font-size:
-        clamp(20px, 4vw, 34px);
+        clamp(17px, 3.5vw, 30px);
 
-    line-height: 1.7;
+    line-height:
+        1.8;
 
-    color: white;
+    color:
+        white;
 
     text-shadow:
         3px 3px 0 #c12668,
@@ -175,15 +772,44 @@ h1 {
 
 .buttons {
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    align-items: flex-start;
+    align-items:
+        flex-start;
 
-    gap: 90px;
+    gap:
+        90px;
 
-    margin-top: 38px;
+    margin-top:
+        38px;
+
+}
+
+
+/* ========================================
+   YES CONTAINER
+======================================== */
+
+.yes-container {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    z-index:
+        50;
 
 }
 
@@ -194,13 +820,23 @@ h1 {
 
 .no-container {
 
-    display: flex;
+    position:
+        relative;
 
-    flex-direction: column;
+    display:
+        flex;
 
-    align-items: center;
+    flex-direction:
+        column;
 
-    position: relative;
+    align-items:
+        center;
+
+    z-index:
+        40;
+
+    transition:
+        transform 1.5s ease-in-out;
 
 }
 
@@ -211,43 +847,39 @@ h1 {
 
 #dialogue {
 
-    width: 230px;
+    width:
+        260px;
 
-    min-height: 25px;
+    min-height:
+        25px;
 
-    margin: 15px 0 0;
+    margin:
+        15px 0 0;
 
     font-family:
         "Press Start 2P",
         monospace;
 
-    font-size: 10px;
+    font-size:
+        10px;
 
-    line-height: 1.8;
+    line-height:
+        1.8;
 
-    color: white;
+    color:
+        white;
 
-    text-align: center;
+    text-align:
+        center;
 
     text-shadow:
         2px 2px 0 #b51d59;
 
-}
+    position:
+        relative;
 
-
-/* ========================================
-   FINAL DIALOGUE
-======================================== */
-
-#dialogue.final-dialogue {
-
-    position: fixed;
-
-    z-index: 100;
-
-    margin: 0;
-
-    pointer-events: none;
+    z-index:
+        100;
 
 }
 
@@ -258,13 +890,11 @@ h1 {
 
 button {
 
-    font-family:
-        "Press Start 2P",
-        monospace;
+    cursor:
+        pointer;
 
-    cursor: pointer;
-
-    border-radius: 8px;
+    border-radius:
+        8px;
 
 }
 
@@ -275,11 +905,18 @@ button {
 
 #yes-button {
 
-    padding: 10px 15px;
+    padding:
+        10px 15px;
 
-    font-size: 12px;
+    font-family:
+        "Press Start 2P",
+        monospace;
 
-    color: white;
+    font-size:
+        12px;
+
+    color:
+        white;
 
     background:
         linear-gradient(
@@ -288,33 +925,34 @@ button {
             #d92e73
         );
 
-    border: 3px solid white;
+    border:
+        3px solid white;
 
     box-shadow:
         0 0 0 3px #a1205b,
         0 5px 0 #861746,
         0 7px 0 rgba(106, 26, 68, 0.2);
 
-    transform-origin: center center;
+    transform-origin:
+        center center;
 
-    position: relative;
+    position:
+        relative;
 
-    z-index: 5;
+    z-index:
+        60;
+
+    transition:
+        transform 1.8s ease-in-out,
+        filter 0.2s ease;
 
 }
 
 
-/* ========================================
-   YES FINAL MOVEMENT
-======================================== */
+#yes-button:hover {
 
-#yes-button.final-yes {
-
-    position: fixed;
-
-    z-index: 100;
-
-    margin: 0;
+    filter:
+        brightness(1.08);
 
 }
 
@@ -325,11 +963,18 @@ button {
 
 #no-button {
 
-    padding: 10px 17px;
+    padding:
+        10px 17px;
 
-    font-size: 10px;
+    font-family:
+        "Press Start 2P",
+        monospace;
 
-    color: #a82a5b;
+    font-size:
+        10px;
+
+    color:
+        #a82a5b;
 
     background:
         linear-gradient(
@@ -338,32 +983,63 @@ button {
             #ffd7e7
         );
 
-    border: 2px solid #c72d6d;
+    border:
+        2px solid #c72d6d;
 
     box-shadow:
         0 3px 0 #a82259;
 
-    position: relative;
+    position:
+        relative;
 
-    z-index: 20;
+    z-index:
+        80;
 
 }
 
 
 /* ========================================
-   BUTTON HOVER
+   FINAL CLICK — NO
 ======================================== */
 
-#yes-button:hover {
+.no-container.final-runaway {
 
-    filter: brightness(1.08);
+    transition:
+        transform 4.5s ease-in-out;
 
 }
 
 
-#no-button:hover {
+/* ========================================
+   FINAL CLICK — DIALOGUE
+======================================== */
 
-    filter: brightness(1.05);
+#dialogue.final-dialogue {
+
+    position:
+        fixed;
+
+    margin:
+        0;
+
+    z-index:
+        400;
+
+    transition:
+        left 2.5s ease-in-out,
+        top 2.5s ease-in-out;
+
+}
+
+
+/* ========================================
+   FINAL CLICK — YES
+======================================== */
+
+.yes-container.final-yes {
+
+    transition:
+        transform 2.5s ease-in-out;
 
 }
 
@@ -374,59 +1050,84 @@ button {
 
 @media (max-width: 600px) {
 
-    .question-screen {
 
-        background-size: 100% 100%;
+    .intro-content {
 
-        background-position: center center;
+        padding:
+            20px;
+
+    }
+
+
+    .intro-content h1 {
+
+        font-size:
+            17px;
+
+    }
+
+
+    #continue-button {
+
+        font-size:
+            9px;
 
     }
 
 
     .content {
 
-        margin-bottom: 50px;
+        margin-bottom:
+            50px;
 
     }
 
 
     .cat-frame {
 
-        width: 140px;
+        width:
+            140px;
 
-        height: 140px;
+        height:
+            140px;
 
     }
 
 
     .cat {
 
-        font-size: 60px;
+        font-size:
+            60px;
 
     }
 
 
-    h1 {
+    .question-screen h2 {
 
-        font-size: 18px;
+        font-size:
+            16px;
 
     }
 
 
     .buttons {
 
-        gap: 45px;
+        gap:
+            45px;
 
-        margin-top: 30px;
+        margin-top:
+            30px;
 
     }
 
 
     #dialogue {
 
-        width: 180px;
+        width:
+            180px;
 
-        font-size: 8px;
+        font-size:
+            8px;
 
     }
 
