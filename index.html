@@ -10,10 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Will You Go Out With Me? 💗</title>
-
-
-    <!-- Google Fonts -->
+    <title>May Sasabihin Ako... 💗</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -28,9 +25,6 @@
         rel="stylesheet"
     >
 
-
-    <!-- CSS -->
-
     <link
         rel="stylesheet"
         href="styles.css"
@@ -42,23 +36,79 @@
 <body>
 
 
-    <main class="question-screen">
+    <!-- ========================================
+         INTRO SCREEN
+    ======================================== -->
+
+    <main
+        class="intro-screen"
+        id="intro-screen"
+    >
+
+        <div class="intro-content">
+
+            <h1>
+                May sasabihin ako...
+            </h1>
+
+            <button id="continue-button">
+                CONTINUE
+            </button>
+
+        </div>
+
+    </main>
 
 
-        <!-- ==================================
-             Main content
-        ================================== -->
+    <!-- ========================================
+         CLOUD TRANSITION
+    ======================================== -->
+
+    <div
+        class="cloud-transition"
+        id="cloud-transition"
+    >
+
+        <div class="transition-cloud cloud-1"></div>
+        <div class="transition-cloud cloud-2"></div>
+        <div class="transition-cloud cloud-3"></div>
+        <div class="transition-cloud cloud-4"></div>
+        <div class="transition-cloud cloud-5"></div>
+        <div class="transition-cloud cloud-6"></div>
+        <div class="transition-cloud cloud-7"></div>
+        <div class="transition-cloud cloud-8"></div>
+        <div class="transition-cloud cloud-9"></div>
+        <div class="transition-cloud cloud-10"></div>
+        <div class="transition-cloud cloud-11"></div>
+        <div class="transition-cloud cloud-12"></div>
+
+    </div>
+
+
+    <!-- ========================================
+         QUESTION SCREEN
+    ======================================== -->
+
+    <main
+        class="question-screen"
+        id="question-screen"
+    >
 
         <div class="content">
 
 
-            <!-- Cat -->
+            <!-- ========================================
+                 CAT
+            ======================================== -->
 
             <div class="cat-frame">
 
                 <div class="cat-screen">
 
-                    <div class="cat">
+                    <div
+                        class="cat"
+                        id="cat"
+                    >
                         🐱
                     </div>
 
@@ -67,37 +117,49 @@
             </div>
 
 
-            <!-- Question -->
+            <!-- ========================================
+                 QUESTION
+            ======================================== -->
 
-            <h1>
-                Will you go<br>
-                out with me?
-            </h1>
+            <h2>
+                Gusto kita.<br>
+                Pwede ba kitang ligawan?
+            </h2>
 
 
-            <!-- Buttons -->
+            <!-- ========================================
+                 BUTTONS
+            ======================================== -->
 
             <div class="buttons">
 
 
                 <!-- YES -->
 
-                <button id="yes-button">
-                    YES!
-                </button>
+                <div
+                    class="yes-container"
+                    id="yes-container"
+                >
+
+                    <button id="yes-button">
+                        Yes
+                    </button>
+
+                </div>
 
 
-                <!-- NO -->
+                <!-- NO + DIALOGUE -->
 
-                <div class="no-container">
+                <div
+                    class="no-container"
+                    id="no-container"
+                >
 
                     <button id="no-button">
                         No
                     </button>
 
-                    <p id="dialogue">
-                        Please say yes 🥺
-                    </p>
+                    <p id="dialogue"></p>
 
                 </div>
 
@@ -106,14 +168,10 @@
 
         </div>
 
-
     </main>
 
 
-    <!-- JavaScript -->
-
     <script src="script.js"></script>
-
 
 </body>
 
