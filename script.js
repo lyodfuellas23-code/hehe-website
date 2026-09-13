@@ -269,7 +269,6 @@ function changeSticker(
 
             /*
              * Show the new sticker.
-
              */
 
             cat.style.opacity =
