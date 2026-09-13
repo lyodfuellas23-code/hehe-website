@@ -38,47 +38,78 @@ let noClicks =
 
 
 /* ========================================
+   GIF SETTINGS
+======================================== */
+
+const gifRestartTime =
+    3000;
+
+
+/*
+ * Keeps track of the currently active
+ * GIF restart timer.
+ */
+
+let gifRestartTimer =
+    null;
+
+
+/* ========================================
    NO DIALOGUES
 ======================================== */
 
 const noMessages = [
 
-    "Sure ka ba diyan? 🥺",
+    "Bawal mag no 😛",
 
-    "Sige ka, tatanda ka dalaga niyan 😏",
+    "Bawal ngani HAHAHA 😂",
 
-    "Ayaw mo humabol sa Pasko? 😂",
+    "Tatanda ka dalaga nyan 😏",
 
-    "Borta ba talaga gusto mo? 😭",
+    "Ayaw mo humabol sa pasko? 🥺",
 
-    "Last na lang talaga... paki-click na lang yung No ulit as your final decision 🥺"
+    "Last na lang talaga... paki-click na lang yung No as your final answer 😭",
+
+    "Okay I understand, thank you pa rin for hearing me out. I hope we can still be friends. ❤️"
 
 ];
 
 
 /* ========================================
-   TEMPORARY STICKERS
+   INITIAL STICKER
+======================================== */
+
+const initialSticker =
+    "assets/nervouscat.gif";
+
+
+/* ========================================
+   NO STICKERS
 ======================================== */
 
 const noStickers = [
 
-    "😳",
+    "assets/blehcat.gif",
 
-    "😏",
+    "assets/laughingcat.gif",
 
-    "😂",
+    "assets/smirkcat.gif",
 
-    "😭",
+    "assets/pleadingcat.gif",
 
-    "🥺",
+    "assets/cryingcat.gif",
 
-    "💀"
+    "assets/finalcat.gif"
 
 ];
 
 
+/* ========================================
+   YES STICKER
+======================================== */
+
 const yesSticker =
-    "😽";
+    "assets/kiligcat.gif";
 
 
 /* ========================================
@@ -90,12 +121,102 @@ questionScreen.style.visibility =
 
 
 /* ========================================
+   STOP GIF LOOP
+======================================== */
+
+function stopGifLoop() {
+
+    if (
+        gifRestartTimer !== null
+    ) {
+
+        clearInterval(
+            gifRestartTimer
+        );
+
+        gifRestartTimer =
+            null;
+
+    }
+
+}
+
+
+/* ========================================
+   START GIF LOOP
+======================================== */
+
+function startGifLoop(
+    stickerImage,
+    stickerPath
+) {
+
+    /*
+     * Stop any previous GIF timer.
+     */
+
+    stopGifLoop();
+
+
+    /*
+     * Only create a restart loop
+     * if the sticker is a GIF.
+     */
+
+    if (
+        !stickerPath
+            .toLowerCase()
+            .endsWith(".gif")
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+     * Restart the GIF automatically.
+     */
+
+    gifRestartTimer =
+        setInterval(
+            function () {
+
+                /*
+                 * Add a timestamp so the browser
+                 * treats it as a fresh image.
+                 */
+
+                stickerImage.src =
+                    stickerPath +
+                    "?restart=" +
+                    Date.now();
+
+            },
+            gifRestartTime
+        );
+
+}
+
+
+/* ========================================
    CHANGE STICKER
 ======================================== */
 
 function changeSticker(
     newSticker
 ) {
+
+    /*
+     * Stop the previous GIF loop.
+     */
+
+    stopGifLoop();
+
+
+    /*
+     * Fade out the current sticker.
+     */
 
     cat.style.opacity =
         "0";
@@ -107,8 +228,49 @@ function changeSticker(
     setTimeout(
         function () {
 
-            cat.textContent =
+            /*
+             * Remove the old sticker.
+             */
+
+            cat.innerHTML =
+                "";
+
+
+            /*
+             * Create a new image.
+             */
+
+            const stickerImage =
+                document.createElement("img");
+
+
+            stickerImage.src =
                 newSticker;
+
+
+            stickerImage.alt =
+                "";
+
+
+            stickerImage.classList.add(
+                "sticker"
+            );
+
+
+            /*
+             * Put the image inside
+             * the cat screen.
+             */
+
+            cat.appendChild(
+                stickerImage
+            );
+
+
+            /*
+             * Show the new sticker.
+
+             */
 
             cat.style.opacity =
                 "1";
@@ -116,6 +278,22 @@ function changeSticker(
             cat.style.transform =
                 "scale(1.15)";
 
+
+            /*
+             * Start the automatic GIF
+             * restart system if needed.
+             */
+
+            startGifLoop(
+                stickerImage,
+                newSticker
+            );
+
+
+            /*
+             * Return the sticker to
+             * its normal size.
+             */
 
             setTimeout(
                 function () {
@@ -167,6 +345,17 @@ continueButton.addEventListener(
 
                 questionScreen.style.visibility =
                     "visible";
+
+
+                /*
+                 * Show the nervous cat
+                 * when the question screen
+                 * first appears.
+                 */
+
+                changeSticker(
+                    initialSticker
+                );
 
             },
             1700
@@ -231,285 +420,26 @@ function moveNoButton(
 
 
 /* ========================================
-   GET CURRENT CENTER
-======================================== */
-
-function getElementCenterX(
-    element
-) {
-
-    const rect =
-        element.getBoundingClientRect();
-
-    return (
-        rect.left +
-        rect.width / 2
-    );
-
-}
-
-
-/* ========================================
-   FINAL CLICK
-======================================== */
-
-function startFinalSequence() {
-
-    /*
-     * =====================================
-     * RECORD CURRENT VISUAL POSITIONS
-     * =====================================
-     *
-     * We capture these BEFORE changing
-     * anything.
-     */
-
-    const noRect =
-        noContainer.getBoundingClientRect();
-
-    const yesRect =
-        yesButton.getBoundingClientRect();
-
-    const dialogueRect =
-        dialogue.getBoundingClientRect();
-
-
-    /*
-     * =====================================
-     * NO
-     * =====================================
-     *
-     * IMPORTANT:
-     *
-     * We do NOT change NO's positioning.
-     *
-     * We keep its click-5 transform:
-     *
-     * translate(285px, 90px)
-     *
-     * and simply animate that transform
-     * farther to the right.
-     *
-     * Therefore there is no teleport.
-     */
-
-    noContainer.classList.add(
-        "final-runaway"
-    );
-
-
-    /*
-     * =====================================
-     * DIALOGUE
-     * =====================================
-     *
-     * Convert dialogue to fixed positioning
-     * AFTER capturing its current position.
-     */
-
-    dialogue.classList.add(
-        "final-dialogue"
-    );
-
-
-    dialogue.style.left =
-        `${dialogueRect.left}px`;
-
-    dialogue.style.top =
-        `${dialogueRect.top}px`;
-
-    dialogue.style.width =
-        `${dialogueRect.width}px`;
-
-
-    /*
-     * Force the browser to render the
-     * dialogue at its current position.
-     */
-
-    dialogue.offsetHeight;
-
-
-    /*
-     * =====================================
-     * CHANGE FINAL DIALOGUE
-     * =====================================
-     */
-
-    dialogue.textContent =
-        "Heh, paano ’yan? Wala ka nang choice kundi Yes lang 😏";
-
-
-    /*
-     * =====================================
-     * YES
-     * =====================================
-     *
-     * YES currently has the scale from
-     * click 5.
-     *
-     * We calculate how far its CENTER needs
-     * to travel to reach the screen center.
-     */
-
-    const currentYesCenterX =
-        yesRect.left +
-        (
-            yesRect.width / 2
-        );
-
-
-    const screenCenterX =
-        window.innerWidth / 2;
-
-
-    const yesMoveX =
-        screenCenterX -
-        currentYesCenterX;
-
-
-    /*
-     * The question is above the buttons.
-     *
-     * Instead of moving YES upward, we move
-     * it slightly DOWN while centering it.
-     *
-     * This prevents the enlarged YES button
-     * from touching the question.
-     */
-
-    const yesMoveY =
-        55;
-
-
-    yesContainer.classList.add(
-        "final-yes"
-    );
-
-
-    /*
-     * =====================================
-     * DIALOGUE TARGET
-     * =====================================
-     *
-     * Place the dialogue underneath the
-     * FINAL YES position.
-     */
-
-    const finalYesWidth =
-        yesRect.width * (
-            1.9 / 1.75
-        );
-
-
-    const finalYesCenter =
-        screenCenterX;
-
-
-    const dialogueWidth =
-        window.innerWidth <= 600
-            ? 250
-            : 330;
-
-
-    const dialogueTargetX =
-        finalYesCenter -
-        (
-            dialogueWidth / 2
-        );
-
-
-    /*
-     * YES moves down by 55px.
-     *
-     * Dialogue goes underneath it.
-     */
-
-    const dialogueTargetY =
-        yesRect.top +
-        yesRect.height +
-        55 +
-        30;
-
-
-    /*
-     * =====================================
-     * FORCE INITIAL STATES
-     * =====================================
-     */
-
-    void yesContainer.offsetWidth;
-    void noContainer.offsetWidth;
-    void dialogue.offsetWidth;
-
-
-    /*
-     * =====================================
-     * START EVERYTHING TOGETHER
-     * =====================================
-     */
-
-    requestAnimationFrame(
-        function () {
-
-
-            /*
-             * YES:
-             *
-             * Keep its current scale from
-             * click 5 and translate it.
-             */
-
-            yesContainer.style.transform =
-                `translate(${yesMoveX}px, ${yesMoveY}px)`;
-
-
-            /*
-             * DIALOGUE:
-             *
-             * Slide underneath YES.
-             */
-
-            dialogue.style.left =
-                `${dialogueTargetX}px`;
-
-            dialogue.style.top =
-                `${dialogueTargetY}px`;
-
-
-            /*
-             * NO:
-             *
-             * Current transform is:
-             *
-             * translate(285px, 90px)
-             *
-             * We add enough X movement to
-             * send it completely off screen.
-             */
-
-            const extraNoMovement =
-                window.innerWidth -
-                noRect.left +
-                250;
-
-
-            noContainer.style.transform =
-                `translate(${285 + extraNoMovement}px, 90px)`;
-
-        }
-    );
-
-}
-
-
-/* ========================================
    NO BUTTON
 ======================================== */
 
 noButton.addEventListener(
     "click",
     function () {
+
+        /*
+         * Stop the button from doing
+         * anything after the final NO.
+         */
+
+        if (
+            noClicks >= 6
+        ) {
+
+            return;
+
+        }
+
 
         noClicks++;
 
@@ -537,7 +467,7 @@ noButton.addEventListener(
 
 
             /*
-             * YES grows but stays in place.
+             * YES grows after every NO.
              */
 
             const newSize =
@@ -563,8 +493,8 @@ noButton.addEventListener(
             ) {
 
                 moveNoButton(
-                    0,
-                    0
+                    70,
+                    -25
                 );
 
             }
@@ -579,8 +509,8 @@ noButton.addEventListener(
             ) {
 
                 moveNoButton(
-                    0,
-                    0
+                    -60,
+                    60
                 );
 
             }
@@ -588,7 +518,6 @@ noButton.addEventListener(
 
             /*
              * CLICK 3
-             * RIGHT + DOWN
              */
 
             if (
@@ -605,7 +534,6 @@ noButton.addEventListener(
 
             /*
              * CLICK 4
-             * RIGHT + UP
              */
 
             if (
@@ -622,7 +550,6 @@ noButton.addEventListener(
 
             /*
              * CLICK 5
-             * RIGHT + DOWN
              */
 
             if (
@@ -630,8 +557,8 @@ noButton.addEventListener(
             ) {
 
                 moveNoButton(
-                    285,
-                    90
+                    260,
+                    -5
                 );
 
             }
@@ -640,23 +567,72 @@ noButton.addEventListener(
 
 
         /* =================================
-           6TH CLICK
+           CLICK 6
         ================================= */
 
         if (
             noClicks === 6
         ) {
 
-            noButton.disabled =
-                true;
+            /*
+             * Final dialogue.
+             */
 
+            dialogue.textContent =
+                noMessages[5];
+
+
+            /*
+             * Final sticker.
+             */
 
             changeSticker(
                 noStickers[5]
             );
 
 
-            startFinalSequence();
+            /*
+             * Keep the dialogue the SAME
+             * size as the other NO messages.
+             */
+
+            dialogue.style.fontSize =
+                "";
+
+            dialogue.style.width =
+                "";
+
+
+            /*
+             * Move NO back beside YES.
+             */
+
+            moveNoButton(
+                90,
+                0
+            );
+
+
+            /*
+             * Keep YES at its grown size.
+             */
+
+            yesButton.style.transform =
+                "scale(1.75)";
+
+
+            /*
+             * Disable BOTH buttons.
+             *
+             * YES remains visible but cannot
+             * be clicked anymore.
+             */
+
+            yesButton.disabled =
+                true;
+
+            noButton.disabled =
+                true;
 
         }
 
@@ -672,23 +648,60 @@ yesButton.addEventListener(
     "click",
     function () {
 
+        /*
+         * Do nothing if YES has already
+         * been disabled.
+         */
+
+        if (
+            yesButton.disabled
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Change the cat.
+         */
+
         changeSticker(
             yesSticker
         );
 
 
+        /*
+         * Change the dialogue.
+         */
+
         dialogue.textContent =
             "Legit ba? HAHA thank you for giving me a chance. Hindi naman natin kailangan magmadali. Let’s get to know each other more muna :)";
 
 
+        /*
+         * MOVE THE DIALOGUE INTO THE
+         * YES CONTAINER.
+         */
+
+        yesContainer.appendChild(
+            dialogue
+        );
+
+
+        /*
+         * Make the dialogue position
+         * itself relative to YES.
+         */
+
         dialogue.style.position =
-            "fixed";
+            "absolute";
 
         dialogue.style.left =
             "50%";
 
         dialogue.style.top =
-            "calc(50% + 120px)";
+            "calc(100% + 25px)";
 
         dialogue.style.width =
             "330px";
@@ -700,21 +713,36 @@ yesButton.addEventListener(
             "translateX(-50%)";
 
 
+        /*
+         * Change YES text.
+         */
+
         yesButton.textContent =
             "YAY!!! 💗";
 
+
+        /*
+         * Make YES slightly larger.
+         */
 
         yesButton.style.transform =
             "scale(1.15)";
 
 
+        /*
+         * Disable BOTH buttons.
+         */
+
         yesButton.disabled =
             true;
-
 
         noButton.disabled =
             true;
 
+
+        /*
+         * Make NO look disabled.
+         */
 
         noButton.style.opacity =
             "0.5";
